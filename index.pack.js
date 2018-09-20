@@ -1127,6 +1127,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var DUMMY_DATA = [{
+    senderId: 'perborgen',
+    text: 'Hey, how is it going?'
+}, {
+    senderId: 'janedoe',
+    text: 'Great! How about you?'
+}, {
+    senderId: 'perborgen',
+    text: 'Good to hear! I am great as well'
+}];
+
 var MessageList = function (_React$Component) {
     _inherits(MessageList, _React$Component);
 
@@ -1137,9 +1148,29 @@ var MessageList = function (_React$Component) {
     }
 
     _createClass(MessageList, [{
-        key: "render",
+        key: 'render',
         value: function render() {
-            return _react2.default.createElement("div", { className: "message-list" });
+            return _react2.default.createElement(
+                'div',
+                { className: 'message-list' },
+                DUMMY_DATA.map(function (message, index) {
+                    return _react2.default.createElement(
+                        'div',
+                        { key: index, className: 'message' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'message-username' },
+                            message.senderId,
+                            ':'
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'message-text' },
+                            message.text
+                        )
+                    );
+                })
+            );
         }
     }]);
 
